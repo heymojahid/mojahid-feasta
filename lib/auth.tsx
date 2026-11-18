@@ -2,7 +2,9 @@
 
 import { createContext, useContext, useEffect, useState } from 'react'
 import { User, Session, AuthChangeEvent } from '@supabase/supabase-js'
-import { supabase } from '@/lib/db/client'
+import { supabase, isSupabaseConfigured } from '@/lib/db/client'
+
+export { isSupabaseConfigured }
 
 interface AuthContextType {
   user: User | null
@@ -48,28 +50,40 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return
     }
 
-    // Get initial session
-    supabase.auth.getSession().then(({ data: { session } }: { data: { session: Session | null } }) => {
-      setSession(session)
-      setUser(session?.user ?? null)
+    if (!isSupabaseConfigured) {
+      setSession(null)
+      setUser(null)
       setLoading(false)
-    })
+      return
+    }
 
-    // Listen for auth changes
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event: AuthChangeEvent, newSession: Session | null) => {
-      setSession(newSession)
-      setUser(newSession?.user ?? null)
+    try {
+      // Get initial session
+      supabase.auth.getSession().then(({ data: { session } }: { data: { session: Session | null } }) => {
+        setSession(session)
+        setUser(session?.user ?? null)
+        setLoading(false)
+      }).catch(() => {
+        setLoading(false)
+      })
+
+      // Listen for auth changes
+      const {
+        data: { subscription },
+      } = supabase.auth.onAuthStateChange((_event: AuthChangeEvent, newSession: Session | null) => {
+        setSession(newSession)
+        setUser(newSession?.user ?? null)
+        setLoading(false)
+      })
+
+      return () => subscription?.unsubscribe?.()
+    } catch {
       setLoading(false)
-    })
-
-    return () => subscription.unsubscribe()
-  }, [])
+    }
+  }, [BYPASS])
 
   const signInWithProvider = async (provider: 'google' | 'github') => {
-    if (BYPASS) {
-      // No-op in bypass mode
+    if (BYPASS || !isSupabaseConfigured) {
       return
     }
     const { error } = await supabase.auth.signInWithOAuth({
@@ -82,6 +96,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }
 
   const signOut = async () => {
+    if (BYPASS || !isSupabaseConfigured) {
+      setUser(null)
+      setSession(null)
+      return
+    }
     const { error } = await supabase.auth.signOut()
     if (error) throw error
   }

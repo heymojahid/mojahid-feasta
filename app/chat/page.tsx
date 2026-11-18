@@ -16,7 +16,7 @@ import { ChatMessage, ApiKeys, ChatThread, AiModel } from '@/lib/types';
 import { useProjects } from '@/lib/useProjects';
 import ModelsModal from '@/components/modals/ModelsModal';
 import { ChatInterface, ChatInterfaceRef } from '@/components/chat-interface';
-import { useAuth } from '@/lib/auth';
+import { useAuth, isSupabaseConfigured } from '@/lib/auth';
 import AuthModal from '@/components/modals/AuthModal';
 import { cn } from '@/lib/utils'
 import ThreadSidebar from '@/components/chat/ThreadSidebar'
@@ -45,13 +45,7 @@ export default function MojahidAiChat() {
   const { theme } = useTheme()
   const isDark = theme.mode === 'dark'
   
-  const guestMode = (process.env.NODE_ENV !== 'production') && (process.env.NEXT_PUBLIC_GUEST_MODE === 'true')
-  if (process.env.NEXT_PUBLIC_GUEST_MODE === 'true' && process.env.NODE_ENV === 'production') {
-    if (typeof window !== 'undefined') {
-      // eslint-disable-next-line no-console
-      console.warn('[GuestMode] Ignored in production build.')
-    }
-  }
+  const guestMode = process.env.NEXT_PUBLIC_GUEST_MODE === 'true' || !isSupabaseConfigured
   const [isHydrated, setIsHydrated] = useState(false)
   const [showSplash, setShowSplash] = useState(true)
   const [sidebarOpen, setSidebarOpen] = useState(true)

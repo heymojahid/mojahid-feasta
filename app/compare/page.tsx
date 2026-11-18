@@ -17,7 +17,7 @@ import { useTheme } from '@/lib/themeContext';
 import { BACKGROUND_STYLES } from '@/lib/themes';
 import { safeUUID } from '@/lib/uuid';
 import LaunchScreen from '@/components/ui/LaunchScreen';
-import { useAuth } from '@/lib/auth';
+import { useAuth, isSupabaseConfigured } from '@/lib/auth';
 import { fetchThreads, createThread as createThreadDb, deleteThread as deleteThreadDb } from '@/lib/db'
 import { useRouter } from 'next/navigation';
 import GithubStar from '@/components/app/GithubStar';
@@ -46,12 +46,14 @@ export default function Home() {
   const [editingProject, setEditingProject] = useState<Project | null>(null);
   const backgroundClass = BACKGROUND_STYLES[theme.background].className;
 
-  // Redirect to signin if not authenticated (wait for auth to finish loading)
+  const guestMode = process.env.NEXT_PUBLIC_GUEST_MODE === 'true' || !isSupabaseConfigured;
+
+  // Redirect to signin if not authenticated and not in guest mode
   useEffect(() => {
-    if (isHydrated && !loading && !user) {
+    if (isHydrated && !loading && !user && !guestMode) {
       router.push('/signin');
     }
-  }, [user, loading, isHydrated, router]);
+  }, [user, loading, isHydrated, router, guestMode]);
 
   const [selectedIds, setSelectedIds] = useLocalStorage<string[]>('mojahid-ai:selected-models', [
     'open-gpt-5-nano', // GPT-5 Nano
