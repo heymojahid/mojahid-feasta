@@ -619,7 +619,7 @@ export default function MojahidAiChat() {
                     <CustomModels compact />
                     <ThemeToggle compact />
                     <Settings compact />
-                    <GithubStar owner="NiladriHazra" repo="Open-Fiesta" />
+                    <GithubStar owner="heymojahid" repo="mojahid-feasta" />
                   </div>
                 )}
               </div>
@@ -629,8 +629,8 @@ export default function MojahidAiChat() {
               <HeaderBar
                 onOpenMenu={() => setMobileSidebarOpen(true)}
                 title="Mojahid AI"
-                githubOwner="NiladriHazra"
-                githubRepo="Open-Fiesta"
+                githubOwner="heymojahid"
+                githubRepo="mojahid-feasta"
                 onOpenModelsModal={() => setModelModalOpen(true)}
                 showCompareButton
                 className="-mr-3 sm:mr-0"

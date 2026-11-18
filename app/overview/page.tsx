@@ -107,7 +107,7 @@ export default function StartupSprintLanding() {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <GithubStar owner="NiladriHazra" repo="Open-Fiesta" theme="dark" />
+          <GithubStar owner="heymojahid" repo="mojahid-feasta" theme="dark" />
           <SupportDropdown inline theme={'dark'} />
         </div>
 
@@ -211,30 +211,23 @@ export default function StartupSprintLanding() {
         <div className="flex items-center gap-3 mt-8">
           {/* Creator avatar only */}
           <a
-            href="https://x.com/byteHumi"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Niladri on X"
+            href="mailto:hello@mojahidx.com"
+            aria-label="Mojahid"
             className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-white/20 hover:ring-white/30 transition-all"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/image.png" alt="Niladri" className="w-full h-full object-cover" />
+            <img src="/mojahid.png" alt="Mojahid" className="w-full h-full object-cover" />
           </a>
 
           {/* Social icons */}
           <a
-            href="https://x.com/byteHumi"
-             target="_blank"
+            href="https://github.com/heymojahid/mojahid-feasta"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Repository"
             className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center hover:bg-gray-900/80 transition-colors"
           >
-            <img src="https://i.postimg.cc/HLTCxTsr/twitter.png" className="w-5 h-5" />
-          </a>
-          <a
-            href="https://github.com/NiladriHazra"
-             target="_blank"
-            className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center hover:bg-gray-900/80 transition-colors"
-          >
-            <img src="https://i.postimg.cc/1XRcSWrf/icons8-github-1500.png" className="w-5 h-5 " />
+            <img src="https://i.postimg.cc/1XRcSWrf/icons8-github-1500.png" alt="GitHub" className="w-5 h-5" />
           </a>
         </div>
 

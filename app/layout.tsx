@@ -88,10 +88,10 @@ export const metadata: Metadata = {
     "evaluate AI answer quality",
     "AI productivity tool",
     // Brand
-    "Niladri Hazra",
+    "Mojahid",
   ].join(", "),
-  authors: [{ name: "Niladri Hazra", url: "https://github.com/NiladriHazra" }],
-  creator: "Niladri Hazra",
+  authors: [{ name: "Mojahid", url: "https://github.com/heymojahid" }],
+  creator: "Mojahid",
   publisher: "Mojahid AI",
   robots: {
     index: true,
@@ -280,8 +280,8 @@ export default function RootLayout({
             },
             author: {
               "@type": "Person",
-              name: "Niladri Hazra",
-              url: "https://github.com/NiladriHazra"
+              name: "Mojahid",
+              url: "https://github.com/heymojahid"
             },
             inLanguage: "en-US",
             isAccessibleForFree: true,

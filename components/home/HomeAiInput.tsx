@@ -2,8 +2,18 @@
 
 import type React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Globe, Paperclip, Send, Loader2, X, Mic, MicOff, Sparkles, FileText } from "lucide-react";
+import { 
+  Globe, 
+  Paperclip, 
+  ArrowUp, 
+  Loader2, 
+  X, 
+  Mic, 
+  MicOff, 
+  Sparkles, 
+  FileText,
+  ChevronDown 
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
@@ -20,8 +30,8 @@ interface Props {
   onClear?: () => void;
 }
 
-const MIN_HEIGHT = 56;
-const MAX_HEIGHT = 250;
+const MIN_HEIGHT = 44;
+const MAX_HEIGHT = 180;
 
 export default function HomeAiInput({
   onSubmit,
@@ -31,11 +41,8 @@ export default function HomeAiInput({
   initialValue,
   onClear,
 }: Props) {
-  // const [isHovered, setIsHovered] = useState(false);
-  const [isMultiLine, setIsMultiLine] = useState(false);
-  const singleLineHeightRef = useRef<number>(0);
   const [value, setValue] = useState(initialValue || "");
-  const [showSearch, setShowSearch] = useState(true);
+  const [showSearch, setShowSearch] = useState(false);
   const [isEnhancing, setIsEnhancing] = useState(false);
   const [attachedFile, setAttachedFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -87,40 +94,14 @@ export default function HomeAiInput({
   const adjustHeight = useCallback(() => {
     const ta = textareaRef.current;
     if (!ta) return;
-
-    if (ta.value === "") {
-      // Reset back to rounded singleline textarea
-      ta.style.height = `${MIN_HEIGHT}px`;
-      setIsMultiLine(false);
-    } else if (isMultiLine) {
-      // Set height limit to multiLine textarea
-      if (ta.scrollHeight > MAX_HEIGHT) {
-        ta.style.height = `auto`;
-        ta.style.height = `${MAX_HEIGHT}px`;
-        return;
-      }
-      // allows textarea to grow height without scrollbar
-      ta.style.height = `auto`;
-    } else {
-      if (ta.clientHeight < ta.scrollHeight) {
-        ta.style.height = `auto`;
-        const newH = Math.min(MIN_HEIGHT - 8, ta.scrollHeight - 8, MAX_HEIGHT);
-        ta.style.height = `${newH}px`;
-        setIsMultiLine(true);
-      }
-    }
-  }, [isMultiLine]);
+    ta.style.height = "auto";
+    const newHeight = Math.min(Math.max(ta.scrollHeight, MIN_HEIGHT), MAX_HEIGHT);
+    ta.style.height = `${newHeight}px`;
+  }, []);
 
   useEffect(() => {
-    const ta = textareaRef.current;
-
-    if (ta && singleLineHeightRef.current === 0) {
-      ta.style.height = "auto"; // Reset
-      singleLineHeightRef.current = ta.scrollHeight;
-
-      ta.style.height = `${MIN_HEIGHT}px`;
-    }
-  }, []);
+    adjustHeight();
+  }, [value, adjustHeight]);
 
   useEffect(
     () => () => {
@@ -170,27 +151,22 @@ export default function HomeAiInput({
 
   const handleSend = () => {
     const text = value.trim();
-    if (!text) return;
+    if (!text && !attachedFile) return;
     if (listening) setTimeout(() => stopListening(), 100);
-    // Debug: verify send triggers and onSubmit exists
-    try {
-      console.log("[HomeAiInput] handleSend invoked with:", text);
-    } catch {}
+
     if (onSubmit) {
       onSubmit(text);
-    } else {
-      try {
-        console.warn("[HomeAiInput] onSubmit prop is not provided");
-      } catch {}
     }
-    // Clear value but keep the height as-is and refocus to preserve layout/feel
+
     setValue("");
     setAttachedFile(null);
     setImagePreview(null);
-    onClear?.(); // Call clear callback if provided
+    onClear?.();
     requestAnimationFrame(() => {
-      textareaRef.current?.focus();
-      // Do NOT reset height here so the bar stays expanded visually
+      if (textareaRef.current) {
+        textareaRef.current.style.height = `${MIN_HEIGHT}px`;
+        textareaRef.current.focus();
+      }
     });
   };
 
@@ -214,8 +190,6 @@ export default function HomeAiInput({
       const data = await res.json();
       if (data?.enhancedPrompt) {
         setValue(data.enhancedPrompt);
-        adjustHeight();
-        // requestAnimationFrame(() => textareaRef.current?.focus())
       }
     } catch (e) {
       console.error("Enhance failed", e);
@@ -225,102 +199,172 @@ export default function HomeAiInput({
   };
 
   return (
-    <motion.div className="absolute w-[100%] h-[10px] mb-[1px]">
+    <div className="w-full max-w-3xl mx-auto px-1 sm:px-2">
       <div
         className={cn(
-          `xl:max-w-[80ch]
-          md:max-w-[calc(70%-theme(spacing.8))]
-          w-[calc(90%-theme(spacing.8))] max-w-[50ch] 
-          -translate-x-1/2 left-[50%]
-          m-0 p-0 relative`,
-          isDark ? "" : "",
+          "w-full rounded-2xl sm:rounded-3xl border transition-all duration-200 overflow-hidden shadow-xl backdrop-blur-xl",
+          isDark
+            ? "bg-neutral-900/95 border-neutral-800 text-white shadow-[0_12px_40px_rgba(0,0,0,0.5)] focus-within:border-red-500/60 focus-within:ring-2 focus-within:ring-red-500/20"
+            : "bg-white/95 border-stone-200 text-stone-900 shadow-[0_12px_32px_rgba(0,0,0,0.08)] focus-within:border-red-500/60 focus-within:ring-2 focus-within:ring-red-500/20"
         )}
-        style={{ position: "absolute", bottom: "50px", zIndex: 1 }} // Add this inline style
       >
-        <div className="flex flex-row items-end">
-          {/* Content area: conditional image layout or standard textarea */}
-          {imagePreview && (
-            <div
-              className=""
-              style={{ "--ai-input-max": `${MAX_HEIGHT}px` } as React.CSSProperties}
-            >
-              <div className="flex gap-3 p-3 pr-4">
-                <div className="relative h-[96px] w-[96px] flex-shrink-0 rounded-xl overflow-hidden border shadow-sm">
-                  <Image
-                    className="object-cover h-full w-full"
-                    src={imagePreview}
-                    height={240}
-                    width={240}
-                    alt="attached image"
-                  />
-                  <button
-                    onClick={handleRemoveAttachment}
-                    className="cursor-pointer absolute top-1.5 right-1.5 inline-flex items-center justify-center h-6 w-6 rounded-full bg-black/70 dark:bg-white/70 text-white dark:text-black hover:bg-black/80 dark:hover:bg-white/80 border border-black/20 dark:border-white/20"
-                    aria-label="Remove image"
-                    title="Remove image"
-                  >
-                    <X className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-          {/* Non-image file info */}
-          {attachedFile && !imagePreview && (
-            <div className=" px-4 py-2 mb-2 bg-transparent flex items-center justify-between gap-3">
-              <div className="flex items-center gap-2 min-w-0">
-                <FileText className="w-4 h-4 text-black/80 dark:text-white/80" />
-                <span
-                  className="truncate text-sm text-black/90 dark:text-white/90"
-                  title={attachedFile.name}
-                >
-                  {attachedFile.name}
-                </span>
-                <span className="text-xs text-black/60 dark:text-white/60 flex-shrink-0">
-                  {Math.max(1, Math.round(attachedFile.size / 1024))} KB
-                </span>
-              </div>
+        {/* Attachment Previews */}
+        {imagePreview && (
+          <div className="p-3 pb-0 flex items-center">
+            <div className="relative h-20 w-20 rounded-xl overflow-hidden border border-neutral-700 shadow-sm">
+              <Image
+                className="object-cover h-full w-full"
+                src={imagePreview}
+                height={160}
+                width={160}
+                alt="attached image"
+              />
               <button
+                type="button"
                 onClick={handleRemoveAttachment}
-                className="cursor-pointer inline-flex items-center justify-center h-5 w-5 rounded-full bg-black/50 dark:bg-white/50 text-black/90 dark:text-white/90 hover:bg-black/60 dark:hover:bg-white/60 border border-black/10 dark:border-white/10"
-                aria-label="Remove file"
+                className="cursor-pointer absolute top-1 right-1 inline-flex items-center justify-center h-5 w-5 rounded-full bg-black/80 text-white hover:bg-black border border-white/20"
+                aria-label="Remove image"
+                title="Remove image"
               >
-                <X className="w-3.5 h-3.5" />
+                <X className="w-3 h-3" />
               </button>
             </div>
-          )}
-          {/* fix attachment error message display, red outline, drop box attachment area */}
-          {attachmentErrorMsg && (
-            <div className="px-4 py-2 mb-4 text-sm text-red-200 bg-red-900/40 border-b border-red-700/40">
-              {attachmentErrorMsg}
+          </div>
+        )}
+
+        {attachedFile && !imagePreview && (
+          <div className="px-3.5 pt-3 pb-0 flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2 min-w-0 bg-white/5 border border-white/10 rounded-lg px-2.5 py-1.5">
+              <FileText className="w-4 h-4 text-red-400 flex-shrink-0" />
+              <span className="truncate text-xs text-neutral-200 font-medium" title={attachedFile.name}>
+                {attachedFile.name}
+              </span>
+              <span className="text-[10px] text-neutral-400 flex-shrink-0">
+                {Math.max(1, Math.round(attachedFile.size / 1024))} KB
+              </span>
             </div>
-          )}
+            <button
+              type="button"
+              onClick={handleRemoveAttachment}
+              className="p-1 rounded-full text-neutral-400 hover:text-white hover:bg-white/10"
+              aria-label="Remove file"
+            >
+              <X className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
+
+        {attachmentErrorMsg && (
+          <div className="px-3.5 py-1.5 text-xs text-red-300 bg-red-950/60 border-b border-red-800/40">
+            {attachmentErrorMsg}
+          </div>
+        )}
+
+        {/* Full-width responsive textarea */}
+        <div className="w-full px-3.5 pt-3 pb-1 sm:px-4 sm:pt-3.5">
+          <Textarea
+            ref={textareaRef}
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                // Submit with Enter on desktop, allow multiline on narrow mobile touchscreens
+                if (typeof window !== "undefined" && window.innerWidth >= 640) {
+                  e.preventDefault();
+                  handleSend();
+                }
+              }
+            }}
+            placeholder={showSearch ? "Search the web with AI..." : "Ask Mojahid AI anything..."}
+            className={cn(
+              "w-full border-none resize-none focus:outline-none focus-visible:outline-none p-0 text-sm sm:text-base leading-relaxed bg-transparent",
+              isDark 
+                ? "text-white placeholder:text-neutral-400" 
+                : "text-stone-900 placeholder:text-stone-400"
+            )}
+            rows={1}
+            style={{ minHeight: `${MIN_HEIGHT}px`, maxHeight: `${MAX_HEIGHT}px` }}
+          />
         </div>
-        <div
-          className={cn(
-            `grid grid-cols-[min-content_1fr_min-content] grid-rows-[1fr_min-content]
-            [grid-template-areas:'file_file_file'_'inputlarge_inputlarge_inputlarge'_'left_inputshort_right']
-            relative outline-none backdrop-blur-sm px-2.5 items-center`,
-            isDark
-              ? "bg-black focus-within:shadow-[0px_1px_10px_rgba(255,255,255,0.25)]"
-              : "bg-gradient-to-br from-rose-50/90 to-pink-50/80 shadow-lg",
-            isMultiLine ? `rounded-2xl` : `rounded-full`,
-          )}
-        >
-          {value.trim() || !browserSupportsSpeechRecognition ? (
+
+        {/* Action Toolbar */}
+        <div className="flex items-center justify-between px-3 pb-2.5 pt-1 sm:px-4 sm:pb-3 gap-2">
+          {/* Left Actions: Model Selector + Tools */}
+          <div className="flex items-center gap-1 sm:gap-1.5 flex-wrap min-w-0">
+            {modelSelectorLabel && onOpenModelSelector && (
+              <button
+                type="button"
+                onClick={onOpenModelSelector}
+                className={cn(
+                  "cursor-pointer rounded-full transition-all inline-flex items-center gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1 h-7 sm:h-8 text-xs font-semibold max-w-[130px] sm:max-w-[180px] truncate",
+                  isDark
+                    ? "bg-white/10 hover:bg-white/15 text-neutral-200 border border-white/10"
+                    : "bg-stone-100 hover:bg-stone-200 text-stone-800 border border-stone-200"
+                )}
+                aria-label="Choose model"
+                title="Choose model"
+              >
+                <span className="truncate">{modelSelectorLabel}</span>
+                <ChevronDown className="w-3.5 h-3.5 opacity-70 flex-shrink-0" />
+              </button>
+            )}
+
+            {/* Attach File */}
+            <label
+              title="Attach file"
+              className={cn(
+                "cursor-pointer rounded-full p-1.5 sm:p-2 transition-all flex items-center justify-center h-7 w-7 sm:h-8 sm:w-8",
+                attachedFile
+                  ? "bg-red-500/20 text-red-400 border border-red-500/30"
+                  : isDark
+                    ? "text-neutral-400 hover:text-white hover:bg-white/10"
+                    : "text-stone-500 hover:text-stone-900 hover:bg-stone-100"
+              )}
+            >
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleFileChange}
+                accept="image/*,application/pdf,text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                className="hidden"
+                aria-label="Attach file"
+              />
+              <Paperclip className="w-4 h-4" />
+            </label>
+
+            {/* Search Web Toggle */}
+            <button
+              type="button"
+              onClick={() => setShowSearch((s) => !s)}
+              className={cn(
+                "cursor-pointer rounded-full p-1.5 sm:p-2 transition-all flex items-center justify-center h-7 w-7 sm:h-8 sm:w-8",
+                showSearch
+                  ? "bg-red-500/20 text-red-400 border border-red-500/30"
+                  : isDark
+                    ? "text-neutral-400 hover:text-white hover:bg-white/10"
+                    : "text-stone-500 hover:text-stone-900 hover:bg-stone-100"
+              )}
+              title={showSearch ? "Web search enabled" : "Enable web search"}
+              aria-pressed={showSearch}
+            >
+              <Globe className="w-4 h-4" />
+            </button>
+
+            {/* Enhance prompt */}
             <button
               type="button"
               onClick={enhancePrompt}
-              disabled={isEnhancing}
+              disabled={isEnhancing || !value.trim()}
               className={cn(
-                "cursor-pointer [grid-area:left] rounded-full p-2 h-8 w-8 transition-all flex items-center justify-center",
-                value.trim() ? "opacity-100" : "opacity-50",
+                "cursor-pointer rounded-full p-1.5 sm:p-2 transition-all flex items-center justify-center h-7 w-7 sm:h-8 sm:w-8 disabled:opacity-30 disabled:cursor-not-allowed",
                 isEnhancing
-                  ? "bg-[var(--accent-interactive-primary)]/20 text-[var(--accent-interactive-primary)] cursor-not-allowed"
-                  : "accent-action-fill",
+                  ? "bg-red-500/20 text-red-400"
+                  : isDark
+                    ? "text-neutral-400 hover:text-white hover:bg-white/10"
+                    : "text-stone-500 hover:text-stone-900 hover:bg-stone-100"
               )}
-              aria-label={isEnhancing ? "Enhancing prompt..." : "Enhance prompt"}
-              title={isEnhancing ? "Enhancing prompt..." : "Enhance prompt with AI"}
+              title="Enhance prompt with AI"
+              aria-label="Enhance prompt"
             >
               {isEnhancing ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -328,181 +372,51 @@ export default function HomeAiInput({
                 <Sparkles className="w-4 h-4" />
               )}
             </button>
-          ) : (
-            <button
-              type="button"
-              onClick={listening ? stopListening : startListening}
-              className={cn(
-                "cursor-pointer [grid-area:left] rounded-full p-2 h-8 w-8 transition-all flex items-center justify-center relative",
-                isDark
-                  ? "transparent  text-white/80 hover:bg-white/20"
-                  : "transparent  text-gray-700 hover:bg-black/15 border border-white/40",
-              )}
-              aria-label={listening ? "Stop recording" : "Start voice input"}
-              title={listening ? "Stop recording" : "Start voice input"}
-            >
-              {listening ? (
-                <MicOff className="w-4 h-4 text-red-500" />
-              ) : (
-                <Mic className="w-4 h-4" />
-              )}
-            </button>
-          )}
-
-          <div
-            className={cn(
-              "col-span-3",
-              isMultiLine ? "[grid-area:inputlarge]" : "[grid-area:inputshort]",
-            )}
-          >
-            <Textarea
-              ref={textareaRef}
-              value={value}
-              onChange={(e) => {
-                setValue(e.target.value);
-                adjustHeight();
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && !e.shiftKey) {
-                  e.preventDefault();
-                  handleSend();
-                }
-              }}
-              placeholder={showSearch ? "Search the web..." : "Type your message here..."}
-              className={cn(
-                `pl-1 w-full border-none resize-none 
-                  focus:outline-none focus-visible:outline-none
-                  leading-[1.5] text-[15px] md:text-base 
-                  placeholder:opacity-80 placeholder:text-[15px] md:placeholder:text-base`,
-                isMultiLine ? "my-3 py-0" : "pl-2.5 py-4",
-                isDark
-                  ? "bg-transparent text-white placeholder:text-white/70"
-                  : "bg-transparent text-gray-800 placeholder:text-gray-600",
-              )}
-            />
           </div>
 
-          {/* Toolbar */}
-          <div
-            className={cn(
-              "[grid-area:right] h-12 flex items-center justify-between",
-              // isDark ? "bg-inherit" : "bg-gradient-to-r from-rose-100/70 to-pink-100/60 border-t border-rose-200/50"
-            )}
-          >
-            <div className="flex items-center gap-2">
-              {/* Attach */}
-              <label
-                title="Attach file"
+          {/* Right Actions: Voice + Prominent Send Button */}
+          <div className="flex items-center gap-1 sm:gap-1.5 flex-shrink-0">
+            {/* Mic */}
+            {browserSupportsSpeechRecognition && (
+              <button
+                type="button"
+                onClick={listening ? stopListening : startListening}
                 className={cn(
-                  "cursor-pointer relative rounded-full transition-all duration-200 w-8 h-8 justify-center flex items-center",
-                  isDark ? "" : "hover:bg-rose-200/40 hover:border hover:border-rose-300/50",
-                  attachedFile
-                    ? "bg-[var(--accent-interactive-primary)]/15 border border-[var(--accent-interactive-primary)] text-[var(--accent-interactive-primary)]"
+                  "cursor-pointer rounded-full p-1.5 sm:p-2 transition-all flex items-center justify-center h-7 w-7 sm:h-8 sm:w-8",
+                  listening
+                    ? "bg-red-500 text-white animate-pulse"
                     : isDark
-                      ? "text-white/60 hover:text-white"
-                      : "text-black-700 hover:text-black-800",
+                      ? "text-neutral-400 hover:text-white hover:bg-white/10"
+                      : "text-stone-500 hover:text-stone-900 hover:bg-stone-100"
                 )}
+                aria-label={listening ? "Stop voice input" : "Start voice input"}
+                title={listening ? "Stop recording" : "Voice input"}
               >
-                <input
-                  type="file"
-                  ref={fileInputRef}
-                  onChange={handleFileChange}
-                  accept="image/*,application/pdf,text/plain,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                  className="hidden"
-                  aria-label="Attach file"
-                />
-                <Paperclip className="w-4 h-4" />
-              </label>
+                {listening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+              </button>
+            )}
 
-              {/* Search toggle OR Model selector */}
-              {modelSelectorLabel && onOpenModelSelector ? (
-                <button
-                  type="button"
-                  onClick={onOpenModelSelector}
-                  className={cn(
-                    "cursor-pointer rounded-full transition-all flex items-center gap-2 px-3 py-1.5 h-8",
-                    isDark
-                      ? "bg-white/10 text-white hover:bg-white/15"
-                      : "bg-rose-200/40 text-rose-800 hover:bg-rose-200/60 border border-rose-300/50",
-                  )}
-                  aria-label="Choose model"
-                  title="Choose model"
-                >
-                  <span className="text-xs truncate max-w-[160px]">{modelSelectorLabel}</span>
-                  {/* simple chevron using an inline svg to avoid new imports mid-file */}
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="opacity-80"
-                  >
-                    <path
-                      d="M7 10l5 5 5-5"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => setShowSearch((s) => !s)}
-                  className={cn(
-                    "cursor-pointer rounded-full transition-all flex items-center w-8 h-8 justify-center",
-                    showSearch
-                      ? "text-[var(--accent-interactive-primary)] border border-rose-900 bg-rose-200/90 hover:bg-transparent"
-                      : isDark
-                        ? " text-white/80"
-                        : " hover:bg-rose-200/40 hover:border hover:border-rose-300/50",
-                  )}
-                  title="Search web"
-                  data-active={showSearch}
-                  aria-pressed={showSearch ? "true" : "false"}
-                >
-                  <div className=" flex items-center justify-center ">
-                    <Globe
-                      className={cn(
-                        "w-4 h-4",
-                        showSearch
-                          ? "text-var(--accent-interactive-primary)"
-                          : isDark
-                            ? "text-white/70"
-                            : "text-gray-700 ",
-                      )}
-                    />
-                  </div>
-                </button>
+            {/* Prominent Send Button (Mobile & Desktop) */}
+            <button
+              type="button"
+              onClick={handleSend}
+              disabled={!value.trim() && !attachedFile}
+              className={cn(
+                "h-7 w-7 sm:h-8 sm:w-8 rounded-full flex items-center justify-center transition-all cursor-pointer shadow-sm",
+                value.trim() || attachedFile
+                  ? "bg-gradient-to-r from-red-600 to-rose-600 text-white hover:from-red-500 hover:to-rose-500 shadow-red-500/25"
+                  : isDark
+                    ? "bg-white/10 text-neutral-500 cursor-not-allowed"
+                    : "bg-stone-200 text-stone-400 cursor-not-allowed"
               )}
-            </div>
-
-            {/* <div className="flex items-center gap-2"> */}
-            {/* Mic (speech recognition) */}
-
-            {/* Send */}
-            {/* <button
-                    type="button"
-                    onClick={handleSend}
-                    className={cn(
-                      'rounded-full p-2 h-8 w-8 transition-all flex items-center justify-center',
-                      value
-                        ? 'bg-[var(--accent-interactive-primary)] text-white hover:bg-[var(--accent-interactive-hover)]'
-                        : isDark
-                          ? 'bg-white/10 text-white/50 cursor-not-allowed'
-                          : 'bg-white/50 text-gray-500 cursor-not-allowed border border-white/40',
-                    )}
-                    disabled={!value.trim()}
-                    aria-label="Send"
-                  >
-                    <Send className="w-4 h-4" />
-                  </button> */}
-            {/* </div> */}
+              aria-label="Send message"
+              title="Send message"
+            >
+              <ArrowUp className="w-4 h-4 stroke-[2.5]" />
+            </button>
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

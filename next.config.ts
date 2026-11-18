@@ -3,7 +3,7 @@ import withPWA from 'next-pwa';
 
 const nextConfig: NextConfig = {
   // Needed for Docker multi-stage build that runs `server.js` from `.next/standalone`
-  output: 'standalone',
+  output: process.env.BUILD_STANDALONE === 'true' ? 'standalone' : undefined,
   // Skip linting during build for production (warnings only)
   eslint: {
     ignoreDuringBuilds: process.env.NODE_ENV === 'production',
