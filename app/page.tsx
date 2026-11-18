@@ -13,8 +13,7 @@ import {
   ArrowRight, 
   ShieldCheck, 
   AlertCircle,
-  KeyRound,
-  Zap
+  KeyRound
 } from "lucide-react"
 
 export default function LaunchingSoonPage() {
@@ -75,8 +74,8 @@ export default function LaunchingSoonPage() {
     return () => clearInterval(interval)
   }, [])
 
-  const handleUnlock = (codeToTest?: string) => {
-    const candidate = (codeToTest || accessCode).trim().toUpperCase()
+  const handleUnlock = () => {
+    const candidate = accessCode.trim().toUpperCase()
     setErrorMessage("")
     setIsSubmitting(true)
 
@@ -88,12 +87,12 @@ export default function LaunchingSoonPage() {
         setIsSubmitting(false)
         setTimeout(() => {
           router.push("/chat")
-        }, 1000)
+        }, 900)
       } else {
         setIsSubmitting(false)
-        setErrorMessage("Invalid access code. Use 'MOJAHID26' or contact hello@mojahidx.com")
+        setErrorMessage("Invalid access code. Please check your invitation or contact hello@mojahidx.com")
       }
-    }, 280)
+    }, 300)
   }
 
   const handleCopyEmail = () => {
@@ -107,41 +106,33 @@ export default function LaunchingSoonPage() {
       {/* 21st.dev Animated Horizon Glow gradient background */}
       <HorizonGlow />
 
-      {/* Floating Glass Navigation (Mobile Optimized) */}
-      <header className="relative z-10 w-full max-w-4xl mx-auto px-3.5 pt-3.5 sm:pt-6">
-        <nav className="flex items-center justify-between px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/80 backdrop-blur-xl border border-stone-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
-          {/* Logo & Brand */}
-          <div className="flex items-center gap-2.5">
+      {/* Floating Glass Navigation (Single clean brand logo, no duplicate text) */}
+      <header className="relative z-10 w-full max-w-4xl mx-auto px-4 pt-4 sm:pt-6">
+        <nav className="flex items-center justify-between px-4 sm:px-6 py-2.5 rounded-full bg-white/80 backdrop-blur-xl border border-stone-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.03)]">
+          {/* Brand Logo - Single clean Mojahid AI identity */}
+          <div className="flex items-center">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img 
-              src="/Web_logo.svg" 
-              alt="Mojahid AI Logo" 
-              className="h-7 sm:h-9 w-auto drop-shadow-[0_2px_8px_rgba(245,41,41,0.3)]" 
+              src="/Web_logo_light.svg" 
+              alt="Mojahid AI" 
+              className="h-7 sm:h-8 w-auto drop-shadow-xs" 
             />
-            <div className="flex flex-col">
-              <span className="font-extrabold tracking-wider text-sm sm:text-base uppercase text-stone-950 leading-tight">
-                MOJAHID AI
-              </span>
-              <span className="text-[9px] sm:text-[10px] font-semibold text-stone-400 tracking-widest uppercase">
-                Horizon Preview
-              </span>
-            </div>
           </div>
 
-          {/* Status Badge (Desktop/Tablet) */}
-          <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-stone-50 border border-stone-200/80 text-stone-600 text-xs font-semibold">
+          {/* Status Badge */}
+          <div className="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-stone-50 border border-stone-200/80 text-stone-600 text-xs font-semibold">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F52929] opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F52929]" />
             </span>
-            <span>VIP Early Access</span>
+            <span>Private VIP Preview</span>
           </div>
 
           {/* Right Action: Contact */}
           <div className="flex items-center gap-2">
             <a
               href="mailto:hello@mojahidx.com"
-              className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full text-xs font-semibold bg-stone-950 hover:bg-stone-800 text-white transition-all shadow-xs cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-stone-950 hover:bg-stone-800 text-white transition-all shadow-xs cursor-pointer"
             >
               <Mail className="w-3.5 h-3.5 text-[#FB6A60]" />
               <span className="hidden sm:inline">hello@mojahidx.com</span>
@@ -219,7 +210,7 @@ export default function LaunchingSoonPage() {
           </div>
         </div>
 
-        {/* VIP Early Access Card (Mobile Optimized) */}
+        {/* Secret VIP Early Access Card (Code kept private) */}
         <div className="w-full max-w-lg mx-auto rounded-2xl sm:rounded-3xl bg-white/90 border border-stone-200/90 p-4 sm:p-6 backdrop-blur-xl shadow-[0_20px_45px_-10px_rgba(245,41,41,0.13),0_4px_16px_rgba(0,0,0,0.02)] relative overflow-hidden">
           {accessGranted ? (
             <div className="flex flex-col items-center text-center space-y-2.5 py-1">
@@ -227,9 +218,9 @@ export default function LaunchingSoonPage() {
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <div>
-                <h2 className="text-base sm:text-lg font-bold text-stone-900">VIP Access Active</h2>
+                <h2 className="text-base sm:text-lg font-bold text-stone-900">VIP Access Verified</h2>
                 <p className="text-xs text-stone-600 mt-0.5">
-                  Access pass <code className="text-emerald-700 font-mono font-bold bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">MOJAHID26</code> verified.
+                  Your invitation pass is confirmed. Welcome to Mojahid AI.
                 </p>
               </div>
               <button
@@ -255,13 +246,13 @@ export default function LaunchingSoonPage() {
                       </span>
                     </h2>
                     <p className="text-[11px] text-stone-500">
-                      Enter code to bypass countdown & enter right now
+                      Enter your invitation pass code to unlock the platform
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Integrated Access Code Input Form */}
+              {/* Secure Access Code Input Form */}
               <form 
                 onSubmit={(e) => {
                   e.preventDefault()
@@ -279,7 +270,7 @@ export default function LaunchingSoonPage() {
                         setAccessCode(e.target.value)
                         if (errorMessage) setErrorMessage("")
                       }}
-                      placeholder="ENTER CODE (E.G. MOJAHID26)"
+                      placeholder="ENTER VIP ACCESS CODE"
                       className="w-full bg-transparent py-2 text-stone-900 placeholder-stone-400 focus:outline-none text-xs sm:text-sm font-mono uppercase tracking-wider font-bold"
                       autoComplete="off"
                       spellCheck="false"
@@ -312,20 +303,8 @@ export default function LaunchingSoonPage() {
                   </div>
                 )}
 
-                {/* Auto-fill Helper */}
-                <div className="flex items-center justify-between text-[11px] sm:text-xs text-stone-500 px-1 pt-0.5">
-                  <span>Pass: <strong className="text-[#F52929] font-mono font-bold">MOJAHID26</strong></span>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setAccessCode("MOJAHID26")
-                      handleUnlock("MOJAHID26")
-                    }}
-                    className="text-[#F52929] hover:underline font-bold cursor-pointer inline-flex items-center gap-1"
-                  >
-                    <Zap className="w-3 h-3 fill-current" />
-                    Apply & Enter Instantly
-                  </button>
+                <div className="text-left text-[11px] text-stone-500 px-1 pt-0.5">
+                  Need an early access pass? Inquire at <a href="mailto:hello@mojahidx.com" className="text-[#F52929] hover:underline font-semibold">hello@mojahidx.com</a>
                 </div>
               </form>
             </div>
@@ -346,7 +325,7 @@ export default function LaunchingSoonPage() {
         </div>
       </section>
 
-      {/* Refined Mobile-Friendly Footer */}
+      {/* Refined Clean Footer */}
       <footer className="relative z-10 w-full max-w-4xl mx-auto px-4 py-4 sm:py-5 border-t border-stone-200/80 flex flex-col sm:flex-row items-center justify-between gap-2.5 text-[11px] sm:text-xs text-stone-500">
         <div>
           © 2026 Mojahid AI. All rights reserved.
