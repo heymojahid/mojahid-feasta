@@ -20,7 +20,7 @@ import LaunchScreen from '@/components/ui/LaunchScreen';
 import { useAuth, isSupabaseConfigured } from '@/lib/auth';
 import { fetchThreads, createThread as createThreadDb, deleteThread as deleteThreadDb } from '@/lib/db'
 import { useRouter } from 'next/navigation';
-import GithubStar from '@/components/app/GithubStar';
+import InstagramLink from '@/components/app/InstagramLink';
 import ThemeToggle from '@/components/ThemeToggle';
 import CustomModels from '@/components/modals/CustomModels';
 import Settings from '@/components/app/Settings';
@@ -519,7 +519,7 @@ export default function Home() {
                     <CustomModels compact />
                     <ThemeToggle compact />
                     <Settings compact />
-                    <GithubStar owner="heymojahid" repo="mojahid-feasta" />
+                    <InstagramLink username="heymojahid" />
                   </div>
                 )}
               </div>
@@ -529,8 +529,7 @@ export default function Home() {
               <HeaderBar
                 onOpenMenu={() => setMobileSidebarOpen(true)}
                 title="Mojahid AI"
-                githubOwner="heymojahid"
-                githubRepo="mojahid-feasta"
+                instagramUsername="heymojahid"
                 onOpenModelsModal={() => setModelsModalOpen(true)}
                 className="-mr-3 sm:mr-0"
               />

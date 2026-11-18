@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import GithubStar from '@/components/app/GithubStar';
+import InstagramLink from '@/components/app/InstagramLink';
 import ThemeToggle from '@/components/ThemeToggle';
 import CustomModels from '@/components/modals/CustomModels';
 import Settings from '@/components/app/Settings';
@@ -13,8 +13,9 @@ import SupportDropdown from '../support-dropdown';
 type Props = {
   onOpenMenu: () => void;
   title?: string;
-  githubOwner: string;
-  githubRepo: string;
+  githubOwner?: string;
+  githubRepo?: string;
+  instagramUsername?: string;
   className?: string;
   onOpenModelsModal?: () => void;
   showCompareButton?: boolean;
@@ -26,6 +27,7 @@ export default function HeaderBar({
   title = 'Mojahid AI',
   githubOwner,
   githubRepo,
+  instagramUsername = 'heymojahid',
   className,
   onOpenModelsModal,
   showCompareButton = false,
@@ -118,7 +120,7 @@ export default function HeaderBar({
         <CustomModels compact />
         <ThemeToggle compact />
         <Settings compact />
-        <GithubStar owner={githubOwner} repo={githubRepo} />
+        <InstagramLink username={instagramUsername} />
         <div >
           <SupportDropdown inline theme={theme.mode === 'dark' ? 'dark' : 'light'} />
         </div>

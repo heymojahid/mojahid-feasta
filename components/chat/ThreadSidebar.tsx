@@ -201,9 +201,10 @@ export default function ThreadSidebar({
             </div>
             {/* Replace title with Made by Mojahid badge */}
             <a
-              href="mailto:hello@mojahidx.com"
+              href="https://instagram.com/heymojahid"
               target="_blank"
               rel="noopener noreferrer"
+              title="Follow @heymojahid on Instagram"
               className={cn(
                 "inline-flex items-center gap-3 rounded-lg xl:rounded-xl px-3 py-2 shadow-sm hover:shadow-md transition-all duration-200 backdrop-blur-sm",
                 theme.mode === 'dark'
@@ -524,9 +525,10 @@ export default function ThreadSidebar({
                 </div>
                 {/* Replace title with Made by Mojahid badge */}
                 <a
-                  href="mailto:hello@mojahidx.com"
+                  href="https://instagram.com/heymojahid"
                   target="_blank"
                   rel="noopener noreferrer"
+                  title="Follow @heymojahid on Instagram"
                   className={cn(
                     "inline-flex items-center gap-3 rounded-lg px-3 py-2 shadow-sm hover:shadow-md transition-all duration-200 backdrop-blur-sm",
                     theme.mode === 'dark'

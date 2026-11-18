@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Badge } from "@/components/ui/Badge";
-import { CircleDot, CircleDotDashed, GithubIcon, Undo2 } from "lucide-react";
+import { CircleDot, CircleDotDashed, GithubIcon, Undo2, Instagram } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "Aura Farmers of Mojahid AI",
@@ -67,10 +67,10 @@ export default async function Contributors() {
                     <div className="relative mx-auto flex w-full max-w-5xl flex-col items-center justify-center gap-12 px-6 pt-2">
                         <div className="flex flex-col items-center justify-center gap-4 text-center">
                             <div className="flex items-center justify-center gap-6 text-sm text-white/90">
-                                <Link href={"https://github.com/NiladriHazra/Open-Fiesta"} target="_blank" rel="noopener noreferrer">
+                                <Link href={"https://instagram.com/heymojahid"} target="_blank" rel="noopener noreferrer">
                                     <Badge variant="secondary" className="gap-2 mb-6 p-[6px]">
-                                        <GithubIcon className="h-3 w-3" />
-                                        Open Source
+                                        <Instagram className="h-3 w-3 text-pink-500" />
+                                        @heymojahid
                                     </Badge>
                                 </Link>
                                 <Link href={"https://runable.com/"} target="_blank" rel="noopener noreferrer">
@@ -191,22 +191,20 @@ export default async function Contributors() {
                     <div className="flex gap-4">
                         <Button asChild variant="default" size="lg">
                             <Link
-                                href="https://github.com/NiladriHazra/Open-Fiesta"
+                                href="https://instagram.com/heymojahid"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <GithubIcon className="h-3 w-3" />
-                                Start Farming
+                                <Instagram className="h-4 w-4 mr-2 text-pink-500" />
+                                Follow @heymojahid
                             </Link>
                         </Button>
                         <Button asChild variant="secondary" size="lg">
                             <Link
-                                href="https://github.com/NiladriHazra/Open-Fiesta/issues"
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                href="mailto:hello@mojahidx.com"
                             >
-                                <CircleDot className="h-3 w-3" />
-                                Browse Aura Tasks
+                                <CircleDot className="h-3 w-3 mr-2" />
+                                Contact Mojahid
                             </Link>
                         </Button>
                     </div>

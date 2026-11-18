@@ -13,7 +13,8 @@ import {
   ArrowRight, 
   ShieldCheck, 
   AlertCircle,
-  KeyRound
+  KeyRound,
+  Instagram
 } from "lucide-react"
 
 export default function LaunchingSoonPage() {
@@ -128,8 +129,20 @@ export default function LaunchingSoonPage() {
             <span>Private VIP Preview</span>
           </div>
 
-          {/* Right Action: Contact */}
+          {/* Right Action: Instagram & Contact */}
           <div className="flex items-center gap-2">
+            <a
+              href="https://instagram.com/heymojahid"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram @heymojahid"
+              title="Follow @heymojahid on Instagram"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-stone-100 hover:bg-stone-200 border border-stone-200/90 text-stone-700 hover:text-pink-600 transition-all shadow-2xs"
+            >
+              <Instagram className="w-3.5 h-3.5 text-pink-500" />
+              <span>@heymojahid</span>
+            </a>
+
             <a
               href="mailto:hello@mojahidx.com"
               className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-stone-950 hover:bg-stone-800 text-white transition-all shadow-xs cursor-pointer"
@@ -331,7 +344,17 @@ export default function LaunchingSoonPage() {
           © 2026 Mojahid AI. All rights reserved.
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <a
+            href="https://instagram.com/heymojahid"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-stone-600 hover:text-pink-600 font-semibold transition-colors"
+          >
+            <Instagram className="w-3.5 h-3.5 text-pink-500" />
+            <span>@heymojahid</span>
+          </a>
+          <span className="text-stone-300">•</span>
           <span>Inquiries:</span>
           <div className="inline-flex items-center gap-1 bg-white/90 border border-stone-200 rounded-full px-2.5 py-0.5 shadow-2xs">
             <span className="text-stone-800 font-mono font-semibold">hello@mojahidx.com</span>

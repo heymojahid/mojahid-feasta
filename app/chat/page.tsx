@@ -28,7 +28,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { Layers } from 'lucide-react'
 import Link from 'next/link'
-import GithubStar from '@/components/app/GithubStar'
+import InstagramLink from '@/components/app/InstagramLink'
 import ThemeToggle from '@/components/ThemeToggle'
 import CustomModels from '@/components/modals/CustomModels'
 import Settings from '@/components/app/Settings'
@@ -619,7 +619,7 @@ export default function MojahidAiChat() {
                     <CustomModels compact />
                     <ThemeToggle compact />
                     <Settings compact />
-                    <GithubStar owner="heymojahid" repo="mojahid-feasta" />
+                    <InstagramLink username="heymojahid" />
                   </div>
                 )}
               </div>
@@ -629,8 +629,7 @@ export default function MojahidAiChat() {
               <HeaderBar
                 onOpenMenu={() => setMobileSidebarOpen(true)}
                 title="Mojahid AI"
-                githubOwner="heymojahid"
-                githubRepo="mojahid-feasta"
+                instagramUsername="heymojahid"
                 onOpenModelsModal={() => setModelModalOpen(true)}
                 showCompareButton
                 className="-mr-3 sm:mr-0"

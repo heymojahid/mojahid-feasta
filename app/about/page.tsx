@@ -84,7 +84,7 @@ export default function AboutPage() {
         <h2 className="text-[11px] tracking-[0.22em] uppercase text-zinc-400 mb-3">Built by Mojahid</h2>
         <p className="text-zinc-300/90 text-sm sm:text-base leading-relaxed max-w-3xl mb-4">
           Hi, I’m Mojahid. I’m building Mojahid AI to make multi‑model workflows simple and fast.
-          Follow along on GitHub, and feel free to reach out.
+          Follow along on Instagram, and feel free to reach out.
         </p>
 
         {/* Contacts */}
@@ -92,9 +92,9 @@ export default function AboutPage() {
           <li>
             <a
               className="inline-flex w-full items-center justify-between rounded border border-zinc-800 bg-zinc-900/40 px-3 py-2 text-xs text-zinc-200 hover:bg-zinc-900 hover:border-zinc-700 transition"
-              href="https://github.com/heymojahid/mojahid-feasta" target="_blank" rel="noreferrer"
+              href="https://instagram.com/heymojahid" target="_blank" rel="noreferrer"
             >
-              GitHub / @heymojahid <span className="text-zinc-500">↗</span>
+              Instagram / @heymojahid <span className="text-zinc-500">↗</span>
             </a>
           </li>
           <li>

@@ -90,7 +90,7 @@ export const metadata: Metadata = {
     // Brand
     "Mojahid",
   ].join(", "),
-  authors: [{ name: "Mojahid", url: "https://github.com/heymojahid" }],
+  authors: [{ name: "Mojahid", url: "https://instagram.com/heymojahid" }],
   creator: "Mojahid",
   publisher: "Mojahid AI",
   robots: {
@@ -239,8 +239,7 @@ export default function RootLayout({
             url: "https://mojahid.ai",
             logo: "https://mojahid.ai/brand.png",
             sameAs: [
-              "https://x.com/byteHumi",
-              "https://github.com/NiladriHazra/Open-Fiesta"
+              "https://instagram.com/heymojahid"
             ]
           })}
         </Script>
@@ -281,7 +280,7 @@ export default function RootLayout({
             author: {
               "@type": "Person",
               name: "Mojahid",
-              url: "https://github.com/heymojahid"
+              url: "https://instagram.com/heymojahid"
             },
             inLanguage: "en-US",
             isAccessibleForFree: true,

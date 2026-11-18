@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import GithubStar from '@/components/app/GithubStar'
+import InstagramLink from '@/components/app/InstagramLink'
 import SupportDropdown from '@/components/support-dropdown'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Instagram } from 'lucide-react'
 import { supabase } from '@/lib/supabase'
 import { Testimonials } from '@/components/testimonials/Testimonials'
 import { CustomCrowd } from '@/components/Footer'
@@ -107,7 +107,7 @@ export default function StartupSprintLanding() {
         </div>
 
         <div className="hidden md:flex items-center gap-3">
-          <GithubStar owner="heymojahid" repo="mojahid-feasta" theme="dark" />
+          <InstagramLink username="heymojahid" theme="dark" />
           <SupportDropdown inline theme={'dark'} />
         </div>
 
@@ -221,13 +221,14 @@ export default function StartupSprintLanding() {
 
           {/* Social icons */}
           <a
-            href="https://github.com/heymojahid/mojahid-feasta"
+            href="https://instagram.com/heymojahid"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="GitHub Repository"
-            className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center hover:bg-gray-900/80 transition-colors"
+            aria-label="Instagram @heymojahid"
+            title="Follow @heymojahid on Instagram"
+            className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center hover:bg-pink-600/30 border border-white/10 hover:border-pink-500/50 transition-colors group"
           >
-            <img src="https://i.postimg.cc/1XRcSWrf/icons8-github-1500.png" alt="GitHub" className="w-5 h-5" />
+            <Instagram className="w-5 h-5 text-pink-400 group-hover:scale-110 transition-transform" />
           </a>
         </div>
 
