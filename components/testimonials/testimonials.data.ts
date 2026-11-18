@@ -243,7 +243,7 @@ Lfggg ; ) 🔥🔥`,
   },
   {
     name: "AS",
-    body: "Bro I am hoping just one day to make a project that goes as viral as yours and feel that I have achieved something. And thanks to this AI Fiesta thing that I found you",
+    body: "Bro I am hoping just one day to make a project that goes as viral as yours and feel that I have achieved something. And thanks to this Mojahid AI thing that I found you",
     img: "https://pbs.twimg.com/profile_images/1961418862525911043/um_csZ3P_400x400.jpg",
     href: "https://x.com/MAD_as_25/status/1959341901909221530",
   },

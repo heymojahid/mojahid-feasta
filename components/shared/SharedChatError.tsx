@@ -87,7 +87,7 @@ export default function SharedChatError({ error }: SharedChatErrorProps) {
               onKeyDown={(e) => handleKeyDown(e, () => window.location.href = '/')}
             >
               <ArrowLeft size={16} aria-hidden="true" />
-              <span>Back to Open Fiesta</span>
+              <span>Back to Mojahid AI</span>
             </Link>
           </nav>
 
@@ -136,7 +136,7 @@ export default function SharedChatError({ error }: SharedChatErrorProps) {
                 aria-describedby="home-description"
               >
                 <Home size={16} aria-hidden="true" />
-                <span>Go to Open Fiesta</span>
+                <span>Go to Mojahid AI</span>
               </Link>
             </div>
 
@@ -145,7 +145,7 @@ export default function SharedChatError({ error }: SharedChatErrorProps) {
               Reload the page to try loading the shared conversation again
             </span>
             <span id="home-description" className="sr-only">
-              Navigate to the main Open Fiesta application
+              Navigate to the main Mojahid AI application
             </span>
 
             {/* Technical Details */}

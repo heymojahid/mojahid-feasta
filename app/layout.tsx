@@ -9,67 +9,31 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://openfiesta.app"),
+  metadataBase: new URL("https://mojahid.ai"),
   title: {
-    default: "Open Fiesta – AI Chat Assistant",
-    template: "%s | Open Fiesta",
+    default: "Mojahid AI – AI Chat Assistant",
+    template: "%s | Mojahid AI",
   },
   description:
-    "Open Fiesta lets you chat with 300+ AI models—OpenAI, Gemini, Claude, Perplexity, DeepSeek, Grok, and more—in one place. Compare responses and stay in flow.",
-  applicationName: "Open Fiesta",
-  generator: "Open Fiesta",
+    "Mojahid AI lets you chat with 300+ AI models—OpenAI, Gemini, Claude, Perplexity, DeepSeek, Grok, and more—in one place. Compare responses and stay in flow.",
+  applicationName: "Mojahid AI",
+  generator: "Mojahid AI",
   keywords: [
-    // Brand focus: Open Fiesta variations
-    "Open Fiesta",
-    "OpenFiesta",
-    "openfiesta",
-    "open-fiesta",
-    "Open-Fiesta",
-    "open fiesta",
-    "openfiesta.app",
-    "www.openfiesta.app",
-    "open-fiesta.app",
-    "open fiesta website",
-    "openfiesta website",
-    "Open Fiesta app",
-    "OpenFiesta app",
-    "openfiesta app",
-    "open-fiesta app",
-    "Open Fiesta AI",
-    "OpenFiesta AI",
-    "openfiesta ai",
-    "openfiesta ai chat",
-    "open-fiesta ai chat",
-    "open fiesta chat",
-    "open-fiesta chat",
-    // Common misspellings people type
-    "openfista",
-    "open-feista",
-    "openfiestaa",
-    "open fiest",
-    "open fiestaa",
-    "openbfiesta",
-    // Brand focus: AI Fiesta variations
-    "AI Fiesta",
-    "AIFiesta",
-    "ai-fiesta",
-    "ai fiesta",
-    "AI Fiesta app",
-    "AIFiesta app",
-    "ai-fiesta.app",
-    "aifiesta",
-    "ai fiesta app",
-    // App intent combinations
-    "Open Fiesta chat app",
-    "Open Fiesta AI app",
-    "openfiesta chat",
-    "openfiesta ai app",
-    "AI fiesta chat",
-    "openfiesta compare",
-    "open fiesta compare",
-    "openfiesta openrouter",
-    "open fiesta openrouter",
-    "openfiesta open router",
+    // Brand focus: Mojahid AI variations
+    "Mojahid AI",
+    "MojahidAI",
+    "mojahid ai",
+    "mojahid-ai",
+    "Mojahid-AI",
+    "mojahid ai chat",
+    "mojahid ai app",
+    "mojahid.ai",
+    "www.mojahid.ai",
+    "mojahid-ai.app",
+    "mojahid ai website",
+    "Mojahid AI app",
+    "MojahidAI app",
+    "mojahid ai compare",
     // Primary intents
     "AI chat",
     "AI assistant",
@@ -128,7 +92,7 @@ export const metadata: Metadata = {
   ].join(", "),
   authors: [{ name: "Niladri Hazra", url: "https://github.com/NiladriHazra" }],
   creator: "Niladri Hazra",
-  publisher: "Open Fiesta",
+  publisher: "Mojahid AI",
   robots: {
     index: true,
     follow: true,
@@ -153,7 +117,7 @@ export const metadata: Metadata = {
     "Open Source",
   ].join(", "),
   other: {
-    "application-name": "Open Fiesta",
+    "application-name": "Mojahid AI",
     "apple-mobile-web-app-capable": "yes",
     "mobile-web-app-capable": "yes",
     "theme-color": "#000000",
@@ -163,17 +127,17 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://openfiesta.app/",
-    siteName: "Open Fiesta",
-    title: "Open Fiesta – Use Open Source LLMs",
+    url: "https://mojahid.ai/",
+    siteName: "Mojahid AI",
+    title: "Mojahid AI – Use Open Source LLMs",
     description:
-      "Open Fiesta lets you chat with 300+ AI models—OpenAI, Gemini, Claude, Perplexity, DeepSeek, Grok, and more—in one place. Compare responses and stay in flow.",
+      "Mojahid AI lets you chat with 300+ AI models—OpenAI, Gemini, Claude, Perplexity, DeepSeek, Grok, and more—in one place. Compare responses and stay in flow.",
     images: [
       {
-        url: "https://openfiesta.app/og.png",
+        url: "https://mojahid.ai/og.png",
         width: 1200,
         height: 630,
-        alt: "Open Fiesta",
+        alt: "Mojahid AI",
       },
     ],
     locale: "en_US",
@@ -182,10 +146,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@byteHumi",
     creator: "@byteHumi",
-    title: "Open Fiesta – AI Chat Assistant",
+    title: "Mojahid AI – AI Chat Assistant",
     description:
-      "Open Fiesta lets you chat with 300+ AI models—OpenAI, Gemini, Claude, Perplexity, DeepSeek, Grok, and more—in one place. Compare responses and stay in flow.",
-    images: ["https://openfiesta.app/og.png"],
+      "Mojahid AI lets you chat with 300+ AI models—OpenAI, Gemini, Claude, Perplexity, DeepSeek, Grok, and more—in one place. Compare responses and stay in flow.",
+    images: ["https://mojahid.ai/og.png"],
   },
 }
 
@@ -208,30 +172,30 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <head>
         {/* Explicit OG/Twitter image for maximum compatibility */}
-        <title>Open Fiesta – Use Open Source LLMs</title>
-        <meta name="description" content="Open Fiesta lets you chat with 300+ AI models—OpenAI, Gemini, Claude, Perplexity, DeepSeek, Grok, and more—in one place. Compare responses and stay in flow." />
-        <meta property="og:title" content="Open Fiesta – Use Open Source LLMs" />
-        <meta property="og:description" content="Open Fiesta lets you chat with 300+ AI models—OpenAI, Gemini, Claude, Perplexity, DeepSeek, Grok, and more—in one place. Compare responses and stay in flow." />
-        <meta property="og:url" content="https://openfiesta.app" />
+        <title>Mojahid AI – Use Open Source LLMs</title>
+        <meta name="description" content="Mojahid AI lets you chat with 300+ AI models—OpenAI, Gemini, Claude, Perplexity, DeepSeek, Grok, and more—in one place. Compare responses and stay in flow." />
+        <meta property="og:title" content="Mojahid AI – Use Open Source LLMs" />
+        <meta property="og:description" content="Mojahid AI lets you chat with 300+ AI models—OpenAI, Gemini, Claude, Perplexity, DeepSeek, Grok, and more—in one place. Compare responses and stay in flow." />
+        <meta property="og:url" content="https://mojahid.ai" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Open Fiesta" />
+        <meta property="og:site_name" content="Mojahid AI" />
         <meta property="og:locale" content="en_US" />
-        <meta property="og:image" content="https://openfiesta.app/og.png" />
-        <meta property="og:image:secure_url" content="https://openfiesta.app/og.png" />
+        <meta property="og:image" content="https://mojahid.ai/og.png" />
+        <meta property="og:image:secure_url" content="https://mojahid.ai/og.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Open Fiesta" />
+        <meta property="og:image:alt" content="Mojahid AI" />
         {/* Generic image hints for Google/LinkedIn/others */}
-        <meta itemProp="image" content="https://openfiesta.app/og.png" />
-        <link rel="image_src" href="https://openfiesta.app/og.png" />
-        <meta name="thumbnail" content="https://openfiesta.app/og.png" />
-        <meta name="twitter:image" content="https://openfiesta.app/og.png" />
+        <meta itemProp="image" content="https://mojahid.ai/og.png" />
+        <link rel="image_src" href="https://mojahid.ai/og.png" />
+        <meta name="thumbnail" content="https://mojahid.ai/og.png" />
+        <meta name="twitter:image" content="https://mojahid.ai/og.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Open Fiesta – Use Open Source LLMs" />
-        <meta name="twitter:description" content="Open Fiesta lets you chat with 300+ AI models—OpenAI, Gemini, Claude, Perplexity, DeepSeek, Grok, and more—in one place. Compare responses and stay in flow." />
-        <meta property="twitter:domain" content="openfiesta.app" />
-        <meta property="twitter:url" content="https://openfiesta.app" />
+        <meta name="twitter:title" content="Mojahid AI – Use Open Source LLMs" />
+        <meta name="twitter:description" content="Mojahid AI lets you chat with 300+ AI models—OpenAI, Gemini, Claude, Perplexity, DeepSeek, Grok, and more—in one place. Compare responses and stay in flow." />
+        <meta property="twitter:domain" content="mojahid.ai" />
+        <meta property="twitter:url" content="https://mojahid.ai" />
         <meta name="twitter:site" content="@byteHumi" />
         <meta name="twitter:creator" content="@byteHumi" />
         {/* Optional: helps Discord/Slack fetch quickly */}
@@ -243,7 +207,7 @@ export default function RootLayout({
         <meta name="background-color" content="#000000" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content="Open Fiesta" />
+        <meta name="apple-mobile-web-app-title" content="Mojahid AI" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="msapplication-tap-highlight" content="no" />
@@ -271,9 +235,9 @@ export default function RootLayout({
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            name: "Open Fiesta",
-            url: "https://openfiesta.app",
-            logo: "https://openfiesta.app/brand.png",
+            name: "Mojahid AI",
+            url: "https://mojahid.ai",
+            logo: "https://mojahid.ai/brand.png",
             sameAs: [
               "https://x.com/byteHumi",
               "https://github.com/NiladriHazra/Open-Fiesta"
@@ -284,11 +248,11 @@ export default function RootLayout({
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebSite",
-            name: "Open Fiesta",
-            url: "https://openfiesta.app",
+            name: "Mojahid AI",
+            url: "https://mojahid.ai",
             potentialAction: {
               "@type": "SearchAction",
-              target: "https://openfiesta.app/?q={search_term_string}",
+              target: "https://mojahid.ai/?q={search_term_string}",
               "query-input": "required name=search_term_string"
             }
           })}
@@ -297,10 +261,10 @@ export default function RootLayout({
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            name: "Open Fiesta",
+            name: "Mojahid AI",
             description:
               "Chat with and compare 300+ AI models (OpenAI, Claude, Gemini, Perplexity, DeepSeek, Grok) side-by-side in one place.",
-            url: "https://openfiesta.app",
+            url: "https://mojahid.ai",
             applicationCategory: "DeveloperApplication",
             operatingSystem: "Web",
             offers: {
@@ -311,8 +275,8 @@ export default function RootLayout({
             },
             publisher: {
               "@type": "Organization",
-              name: "Open Fiesta",
-              url: "https://openfiesta.app"
+              name: "Mojahid AI",
+              url: "https://mojahid.ai"
             },
             author: {
               "@type": "Person",

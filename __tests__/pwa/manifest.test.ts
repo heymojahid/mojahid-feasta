@@ -26,8 +26,8 @@ describe('PWA Manifest', () => {
   });
 
   it('should have correct basic properties', () => {
-    expect(manifest.name).toBe('Open Fiesta - AI Chat Platform');
-    expect(manifest.short_name).toBe('Open Fiesta');
+    expect(manifest.name).toBe('Mojahid AI - AI Chat Platform');
+    expect(manifest.short_name).toBe('Mojahid AI');
     expect(manifest.start_url).toBe('/');
     expect(manifest.display).toBe('standalone');
     expect(manifest.background_color).toBe('#000000');

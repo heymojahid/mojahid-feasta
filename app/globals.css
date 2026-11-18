@@ -1319,7 +1319,7 @@ body.light * {
   animation: img-ripple 2.6s ease-in-out infinite;
 }
 
-/* Additional CSS variables and styles for OpenFiestaChat page.tsx */
+/* Additional CSS variables and styles for MojahidAiChat page.tsx */
 :root {
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);

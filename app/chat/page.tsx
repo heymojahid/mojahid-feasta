@@ -40,7 +40,7 @@ import SupportDropdown from '@/components/support-dropdown'
 import ProjectModal from '@/components/modals/ProjectModal'
 import { Project } from '@/lib/projects'
 
-export default function OpenFiestaChat() {
+export default function MojahidAiChat() {
   const { user } = useAuth()
   const { theme } = useTheme()
   const isDark = theme.mode === 'dark'
@@ -61,14 +61,14 @@ export default function OpenFiestaChat() {
   const [authModalOpen, setAuthModalOpen] = useState(false)
   const [projectModalOpen, setProjectModalOpen] = useState(false)
   const [editingProject, setEditingProject] = useState<Project | null>(null)
-  const [threads, setThreads] = useLocalStorage<ChatThread[]>('ai-fiesta:threads', [])
+  const [threads, setThreads] = useLocalStorage<ChatThread[]>('mojahid-ai:threads', [])
   const [activeThreadId, setActiveThreadId] = useState<string | null>(null)
   const [editingMessage, setEditingMessage] = useState<string>('')
-  const [apiKeys] = useLocalStorage<ApiKeys>('ai-fiesta:api-keys', {})
+  const [apiKeys] = useLocalStorage<ApiKeys>('mojahid-ai:api-keys', {})
   const [customModels] = useCustomModels()
-  const [selectedHomeModelId, setSelectedHomeModelId] = useLocalStorage<string>('ai-fiesta:selected-home-model', 'open-evil')
+  const [selectedHomeModelId, setSelectedHomeModelId] = useLocalStorage<string>('mojahid-ai:selected-home-model', 'open-evil')
   // First-visit modal
-  const [firstVisitSeen, setFirstVisitSeen] = useLocalStorage<boolean>('ai-fiesta:first-visit-seen', false)
+  const [firstVisitSeen, setFirstVisitSeen] = useLocalStorage<boolean>('mojahid-ai:first-visit-seen', false)
   const [showFirstVisit, setShowFirstVisit] = useState<boolean>(() => !firstVisitSeen)
   
   const {
@@ -407,7 +407,7 @@ export default function OpenFiestaChat() {
     <div className={cn("min-h-screen w-full relative", isDark ? "dark" : "")}> 
       {/* SEO: Primary page heading for branded queries */}
       <h1 className="sr-only">
-        Open Fiesta — chat and compare 300+ AI models (OpenAI, Claude, Gemini, DeepSeek, Grok) in one place
+        Mojahid AI — chat and compare 300+ AI models (OpenAI, Claude, Gemini, DeepSeek, Grok) in one place
       </h1>
 
       {/* Background */}
@@ -622,7 +622,7 @@ export default function OpenFiestaChat() {
             <div className="hidden lg:block">
               <HeaderBar
                 onOpenMenu={() => setMobileSidebarOpen(true)}
-                title="Open Fiesta"
+                title="Mojahid AI"
                 githubOwner="NiladriHazra"
                 githubRepo="Open-Fiesta"
                 onOpenModelsModal={() => setModelModalOpen(true)}

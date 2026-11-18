@@ -82,7 +82,7 @@ describe('OfflineStorage', () => {
     it('should initialize the database', async () => {
       await offlineStorage.init();
       
-      expect(mockIndexedDB.open).toHaveBeenCalledWith('OpenFiestaOffline', 1);
+      expect(mockIndexedDB.open).toHaveBeenCalledWith('MojahidAIOffline', 1);
     });
 
     it('should create object stores on upgrade', async () => {

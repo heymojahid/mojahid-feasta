@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'User-Agent': 'Open-Fiesta/1.0'
+          'User-Agent': 'Mojahid-AI/1.0'
         },
         body: JSON.stringify(requestBody)
       });
@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'User-Agent': 'Open-Fiesta/1.0'
+          'User-Agent': 'Mojahid-AI/1.0'
         },
         body: JSON.stringify(requestBody)
       });

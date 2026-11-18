@@ -1,4 +1,4 @@
-# Open Fiesta Theme System Overview
+# Mojahid AI Theme System Overview
 
 Date: 2025-08-20  
 Status: Stable, polishing tasks pending (minor)
@@ -22,7 +22,7 @@ A unified, extensible, and performant theming layer providing:
 | Accent System      | Palette + gradient per accent + derived interaction tiers                         | `ACCENT_COLORS`                           |
 | Background Styles  | 2 consolidated variants mapping to classes                                        | `BACKGROUND_STYLES`                       |
 | Badge Pair System  | Dual (pro/free) color token sets -> badges & model chips                          | `BADGE_PAIRS`, `badgeSystem.ts`           |
-| Persistence        | LocalStorage load/save keyed by `ai-fiesta:theme`                                 | `loadTheme`, `saveTheme`                  |
+| Persistence        | LocalStorage load/save keyed by `mojahid-ai:theme`                                | `loadTheme`, `saveTheme`                  |
 | Non-blocking Fonts | Fire-and-forget Google Fonts loader                                               | `loadGoogleFont`                          |
 | Contrast Helpers   | WCAG ratio evaluation & dev logging                                               | `contrastRatio`, `evaluateAccentContrast` |
 

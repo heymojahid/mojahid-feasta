@@ -224,7 +224,7 @@ export async function POST(req: NextRequest) {
       // For reasoning models, try both token methods
       const headers: Record<string, string> = {
         'Content-Type': 'application/json',
-        'User-Agent': 'Open-Fiesta/1.0',
+        'User-Agent': 'Mojahid-AI/1.0',
         Authorization: `Bearer ${apiKey}`,
       };
 
@@ -238,7 +238,7 @@ export async function POST(req: NextRequest) {
         method: isAudioModel ? 'GET' : 'POST',
         headers: isAudioModel
           ? {
-              'User-Agent': 'Open-Fiesta/1.0',
+              'User-Agent': 'Mojahid-AI/1.0',
               Authorization: `Bearer ${apiKey}`,
             }
           : headers,

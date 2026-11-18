@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  ai_fiesta:
+  mojahid_ai:
     build:
       context: .
       dockerfile: Dockerfile
@@ -12,7 +12,7 @@ services:
     restart: unless-stopped
 
   # Development version with hot reload
-  ai_fiesta_dev:
+  mojahid_ai_dev:
     build:
       context: .
       dockerfile: Dockerfile.dev

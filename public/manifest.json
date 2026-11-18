@@ -1,6 +1,6 @@
 {
-  "name": "Open Fiesta - AI Chat Platform",
-  "short_name": "Open Fiesta",
+  "name": "Mojahid AI - AI Chat Platform",
+  "short_name": "Mojahid AI",
   "description": "A powerful AI chat platform supporting multiple models with offline capabilities",
   "start_url": "/",
   "display": "standalone",

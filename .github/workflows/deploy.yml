@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build Open Fiesta
+      - name: Build Mojahid AI
         run: npm run build
 
   docker:

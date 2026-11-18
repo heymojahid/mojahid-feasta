@@ -31,7 +31,7 @@ export default function ModelsModal({
   const { theme } = useTheme();
   const isDark = theme.mode === 'dark';
   const [searchQuery, setSearchQuery] = useState('');
-  const [favoriteIds, setFavoriteIds] = useLocalStorage<string[]>('ai-fiesta:favorite-models', [
+  const [favoriteIds, setFavoriteIds] = useLocalStorage<string[]>('mojahid-ai:favorite-models', [
     'unstable-gpt-5-chat',
     'unstable-claude-sonnet-4',
     'gemini-2.5-pro',
@@ -561,7 +561,7 @@ export default function ModelsModal({
             title={name}
             models={grouped[name]}
             iconUrl={isDark ? (BRAND_ICONS[name]?.darkUrl ?? '/brand.svg') : (BRAND_ICONS[name]?.lightUrl ?? '/brand.svg')}
-            iconAlt={BRAND_ICONS[name]?.alt ?? 'Open Fiesta'}
+            iconAlt={BRAND_ICONS[name]?.alt ?? 'Mojahid AI'}
           />
         ));
     });

@@ -34,7 +34,7 @@ describe('InstallPrompt', () => {
       beforeInstallPromptHandler(mockBeforeInstallPromptEvent);
     }
 
-    expect(screen.getByText('Install Open Fiesta')).toBeInTheDocument();
+    expect(screen.getByText('Install Mojahid AI')).toBeInTheDocument();
     expect(screen.getByText('Get the app experience')).toBeInTheDocument();
     expect(screen.getByText('Faster loading')).toBeInTheDocument();
     expect(screen.getByText('Works offline')).toBeInTheDocument();
@@ -85,7 +85,7 @@ describe('InstallPrompt', () => {
     
     render(<InstallPrompt />);
     
-    expect(screen.queryByText('Install Open Fiesta')).not.toBeInTheDocument();
+    expect(screen.queryByText('Install Mojahid AI')).not.toBeInTheDocument();
   });
 
   it('should show loading state during installation', async () => {

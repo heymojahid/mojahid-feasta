@@ -10,24 +10,24 @@ const ibmMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "About — Open Fiesta",
+  title: "About — Mojahid AI",
   description:
-    "Learn about Open Fiesta, the AI chat that lets you compare 300+ models in one place. Built by Niladri Hazra.",
+    "Learn about Mojahid AI, the AI chat that lets you compare 300+ models in one place. Built by Niladri Hazra.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About — Open Fiesta",
+    title: "About — Mojahid AI",
     description:
-      "Learn about Open Fiesta, the AI chat that lets you compare 300+ models in one place.",
-    url: "https://openfiesta.app/about",
-    siteName: "Open Fiesta",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Open Fiesta" }],
+      "Learn about Mojahid AI, the AI chat that lets you compare 300+ models in one place.",
+    url: "https://mojahid.ai/about",
+    siteName: "Mojahid AI",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Mojahid AI" }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "About — Open Fiesta",
+    title: "About — Mojahid AI",
     description:
-      "Learn about Open Fiesta, the AI chat that lets you compare 300+ models in one place.",
+      "Learn about Mojahid AI, the AI chat that lets you compare 300+ models in one place.",
     images: ["/og.png"],
   },
 }
@@ -45,13 +45,13 @@ export default function AboutPage() {
               "@type": "ListItem",
               position: 1,
               name: "Home",
-              item: "https://openfiesta.app/",
+              item: "https://mojahid.ai/",
             },
             {
               "@type": "ListItem",
               position: 2,
               name: "About",
-              item: "https://openfiesta.app/about",
+              item: "https://mojahid.ai/about",
             },
           ],
         })}
@@ -69,7 +69,7 @@ export default function AboutPage() {
 
         {/* Title */}
         <h1 className="text-zinc-100 text-3xl sm:text-4xl md:text-5xl leading-tight mb-4">
-          Open Fiesta
+          Mojahid AI
         </h1>
         <p className="text-zinc-300/90 text-sm sm:text-base leading-relaxed max-w-3xl">
           Chat with and compare <span className="font-semibold text-zinc-100">300+ AI models</span> — OpenAI, Claude,
@@ -83,7 +83,7 @@ export default function AboutPage() {
         {/* Founder */}
         <h2 className="text-[11px] tracking-[0.22em] uppercase text-zinc-400 mb-3">Built by Niladri Hazra</h2>
         <p className="text-zinc-300/90 text-sm sm:text-base leading-relaxed max-w-3xl mb-4">
-          Hi, I’m Niladri. I’m building Open Fiesta to make multi‑model workflows simple and fast.
+          Hi, I’m Niladri. I’m building Mojahid AI to make multi‑model workflows simple and fast.
           Follow along on X and GitHub, and feel free to reach out.
         </p>
 

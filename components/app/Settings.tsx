@@ -13,7 +13,7 @@ export default function Settings({ compact }: SettingsProps) {
   const { theme } = useTheme();
   const isDark = theme.mode === 'dark';
   const [open, setOpen] = useState(false);
-  const [keys, setKeys] = useLocalStorage<ApiKeys>("ai-fiesta:keys", {});
+  const [keys, setKeys] = useLocalStorage<ApiKeys>("mojahid-ai:keys", {});
   const [gemini, setGemini] = useState(keys.gemini || "");
   const [openrouter, setOpenrouter] = useState(keys.openrouter || "");
   const [mistral, setMistral] = useState(keys['mistral'] || "");

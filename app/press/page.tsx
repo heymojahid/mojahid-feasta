@@ -10,22 +10,22 @@ const ibmMono = IBM_Plex_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Press — Open Fiesta",
-  description: "Press kit, logos, and boilerplate for Open Fiesta.",
+  title: "Press — Mojahid AI",
+  description: "Press kit, logos, and boilerplate for Mojahid AI.",
   alternates: { canonical: "/press" },
   openGraph: {
-    title: "Press — Open Fiesta",
-    description: "Press kit, logos, and boilerplate for Open Fiesta.",
-    url: "https://openfiesta.app/press",
-    siteName: "Open Fiesta",
-    images: [{ url: "https://openfiesta.app/og.png", width: 1200, height: 630, alt: "Open Fiesta" }],
+    title: "Press — Mojahid AI",
+    description: "Press kit, logos, and boilerplate for Mojahid AI.",
+    url: "https://mojahid.ai/press",
+    siteName: "Mojahid AI",
+    images: [{ url: "https://mojahid.ai/og.png", width: 1200, height: 630, alt: "Mojahid AI" }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Press — Open Fiesta",
-    description: "Press kit, logos, and boilerplate for Open Fiesta.",
-    images: ["https://openfiesta.app/og.png"],
+    title: "Press — Mojahid AI",
+    description: "Press kit, logos, and boilerplate for Mojahid AI.",
+    images: ["https://mojahid.ai/og.png"],
   },
 }
 
@@ -38,8 +38,8 @@ export default function PressPage() {
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: "https://openfiesta.app/" },
-            { "@type": "ListItem", position: 2, name: "Press", item: "https://openfiesta.app/press" },
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://mojahid.ai/" },
+            { "@type": "ListItem", position: 2, name: "Press", item: "https://mojahid.ai/press" },
           ],
         })}
       </Script>
@@ -56,9 +56,9 @@ export default function PressPage() {
         </p>
 
         {/* Title */}
-        <h1 className="text-zinc-100 text-3xl sm:text-4xl md:text-5xl leading-tight mb-4">Open Fiesta Press Kit</h1>
+        <h1 className="text-zinc-100 text-3xl sm:text-4xl md:text-5xl leading-tight mb-4">Mojahid AI Press Kit</h1>
         <p className="text-zinc-300/90 text-sm sm:text-base leading-relaxed max-w-3xl">
-          Open Fiesta lets you chat with and compare <span className="font-semibold text-zinc-100">300+ AI models</span> — OpenAI, Claude,
+          Mojahid AI lets you chat with and compare <span className="font-semibold text-zinc-100">300+ AI models</span> — OpenAI, Claude,
           Gemini, Perplexity, DeepSeek, Grok, and more — side‑by‑side in one place.
         </p>
 
@@ -68,9 +68,9 @@ export default function PressPage() {
         {/* Boilerplate */}
         <h2 className="text-[11px] tracking-[0.22em] uppercase text-zinc-400 mb-3">Boilerplate</h2>
         <p className="text-zinc-300/90 text-sm sm:text-base leading-relaxed max-w-3xl">
-          Open Fiesta is an elegant, fast AI chat assistant that makes it easy to compare responses
+          Mojahid AI is an elegant, fast AI chat assistant that makes it easy to compare responses
           across 300+ models in one interface, so you can think, write, and build faster.
-          Learn more at <a className="underline decoration-zinc-600 hover:decoration-zinc-400" href="https://openfiesta.app" target="_blank" rel="noreferrer">openfiesta.app</a>.
+          Learn more at <a className="underline decoration-zinc-600 hover:decoration-zinc-400" href="https://mojahid.ai" target="_blank" rel="noreferrer">mojahid.ai</a>.
         </p>
 
         {/* Assets */}
@@ -88,7 +88,7 @@ export default function PressPage() {
         <div className="mt-10">
           <h2 className="text-[11px] tracking-[0.22em] uppercase text-zinc-400 mb-3">Contact</h2>
           <ul className="space-y-2 text-zinc-300/90 text-sm sm:text-base">
-            <li>Email: <a className="underline decoration-zinc-600 hover:decoration-zinc-400" href="mailto:press@openfiesta.app">press@openfiesta.app</a></li>
+            <li>Email: <a className="underline decoration-zinc-600 hover:decoration-zinc-400" href="mailto:press@mojahid.ai">press@mojahid.ai</a></li>
             <li>X: <a className="underline decoration-zinc-600 hover:decoration-zinc-400" href="https://x.com/byteHumi" target="_blank" rel="noreferrer">@byteHumi</a></li>
           </ul>
         </div>

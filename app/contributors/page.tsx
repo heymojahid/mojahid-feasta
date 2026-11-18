@@ -11,8 +11,8 @@ import { Badge } from "@/components/ui/Badge";
 import { CircleDot, CircleDotDashed, GithubIcon, Undo2 } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Aura Farmers of Open-Fiesta",
-    description: "Meet the amazing aura farmers who nurture the energy behind Open-Fiesta",
+    title: "Aura Farmers of Mojahid AI",
+    description: "Meet the amazing aura farmers who nurture the energy behind Mojahid AI",
 };
 
 
@@ -23,7 +23,7 @@ async function getContributors(): Promise<Contributor[]> {
             {
                 headers: {
                     Accept: "application/vnd.github.v3+json",
-                    "User-Agent": "Open-Fiesta-Web-App",
+                    "User-Agent": "Mojahid-AI-Web-App",
                 },
                 next: { revalidate: 600 },
             }
@@ -84,7 +84,7 @@ export default async function Contributors() {
                                 Lead Aura Farmers
                             </h1>
                             <p className="text-muted-foreground max-w-md text-lg">
-                                The farmers who cultivated the most auras for Open-Fiesta
+                                The farmers who cultivated the most auras for Mojahid AI
                             </p>
                         </div>
 
@@ -141,7 +141,7 @@ export default async function Contributors() {
                             Aura Farming Community
                         </h2>
                         <p className="text-white/70 max-w-md text-base">
-                            Every aura sown matters. Meet the community behind Open-Fiesta.
+                            Every aura sown matters. Meet the community behind Mojahid AI.
                         </p>
                     </div>
 

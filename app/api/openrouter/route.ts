@@ -278,7 +278,7 @@ export async function POST(req: NextRequest) {
       headers: {
         Authorization: `Bearer ${apiKey}`,
         'HTTP-Referer': referer || 'http://localhost',
-        'X-Title': title || 'Open Source Fiesta',
+        'X-Title': title || 'Mojahid AI',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(bodyObj),

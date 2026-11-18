@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://openfiesta.app'
+  const base = 'https://mojahid.ai'
   const lastModified = new Date()
 
   return [

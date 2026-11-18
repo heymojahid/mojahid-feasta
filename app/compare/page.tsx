@@ -53,21 +53,21 @@ export default function Home() {
     }
   }, [user, loading, isHydrated, router]);
 
-  const [selectedIds, setSelectedIds] = useLocalStorage<string[]>('ai-fiesta:selected-models', [
+  const [selectedIds, setSelectedIds] = useLocalStorage<string[]>('mojahid-ai:selected-models', [
     'open-gpt-5-nano', // GPT-5 Nano
     'open-midijourney', // Midjourney
     'open-evil',
     'open-mistral', // Mistral Small 3.1
     'open-llamascout', // Llama Scout
   ]);
-  const [keys] = useLocalStorage<ApiKeys>('ai-fiesta:keys', {});
-  const [threads, setThreads] = useLocalStorage<ChatThread[]>('ai-fiesta:threads', []);
-  const [activeId, setActiveId] = useLocalStorage<string | null>('ai-fiesta:active-thread', null);
-  const [sidebarOpen, setSidebarOpen] = useLocalStorage<boolean>('ai-fiesta:sidebar-open', true);
+  const [keys] = useLocalStorage<ApiKeys>('mojahid-ai:keys', {});
+  const [threads, setThreads] = useLocalStorage<ChatThread[]>('mojahid-ai:threads', []);
+  const [activeId, setActiveId] = useLocalStorage<string | null>('mojahid-ai:active-thread', null);
+  const [sidebarOpen, setSidebarOpen] = useLocalStorage<boolean>('mojahid-ai:sidebar-open', true);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [modelsModalOpen, setModelsModalOpen] = useState(false);
   const [selectedVoice, setSelectedVoice] = useLocalStorage<string>(
-    'ai-fiesta:selected-voice',
+    'mojahid-ai:selected-voice',
     'alloy',
   );
 
@@ -141,7 +141,7 @@ export default function Home() {
   const anyLoading = loadingIds.length > 0;
 
   const [firstNoteDismissed, setFirstNoteDismissed] = useLocalStorage<boolean>(
-    'ai-fiesta:first-visit-note-dismissed',
+    'mojahid-ai:first-visit-note-dismissed',
     false,
   );
   const showFirstVisitNote =
@@ -516,7 +516,7 @@ export default function Home() {
             <div className="hidden lg:block">
               <HeaderBar
                 onOpenMenu={() => setMobileSidebarOpen(true)}
-                title="Open Fiesta"
+                title="Mojahid AI"
                 githubOwner="NiladriHazra"
                 githubRepo="Open-Fiesta"
                 onOpenModelsModal={() => setModelsModalOpen(true)}

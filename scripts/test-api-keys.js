@@ -153,7 +153,7 @@ async function testUnstableKey() {
 }
 
 async function main() {
-  log('🔑 Testing API Keys for Open-Fiesta Default Models', 'bold');
+  log('🔑 Testing API Keys for Mojahid AI Default Models', 'bold');
   log('================================================', 'blue');
 
   // Check if .env exists

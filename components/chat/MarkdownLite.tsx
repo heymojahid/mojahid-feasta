@@ -587,7 +587,7 @@ export default function MarkdownLite({ text }: Props) {
 
   if (audioUrl) {
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
-    const filename = `openfiesta-audio-${timestamp}.mp3`;
+    const filename = `mojahid-ai-audio-${timestamp}.mp3`;
 
     return (
       <div className={cn(
@@ -1366,7 +1366,7 @@ function renderInline(input: string, isDark?: boolean): React.ReactNode[] {
     if (imageMatch) {
       const [, alt, src] = imageMatch;
       const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
-      const filename = `openfiesta-image-${timestamp}.png`;
+      const filename = `mojahid-ai-image-${timestamp}.png`;
 
       out.push(
         <ImageWithSkeleton

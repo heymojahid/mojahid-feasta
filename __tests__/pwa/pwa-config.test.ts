@@ -97,8 +97,8 @@ describe('PWA Configuration', () => {
       const config = getPWAConfig();
       
       expect(config).toEqual({
-        name: 'Open Fiesta - AI Chat Platform',
-        shortName: 'Open Fiesta',
+        name: 'Mojahid AI - AI Chat Platform',
+        shortName: 'Mojahid AI',
         themeColor: '#000000',
         backgroundColor: '#000000',
         display: 'standalone',
@@ -329,8 +329,8 @@ describe('PWA Configuration', () => {
   describe('DEFAULT_MANIFEST', () => {
     it('should provide default manifest configuration', () => {
       expect(DEFAULT_MANIFEST).toEqual({
-        name: 'Open Fiesta - AI Chat Platform',
-        short_name: 'Open Fiesta',
+        name: 'Mojahid AI - AI Chat Platform',
+        short_name: 'Mojahid AI',
         description: 'A powerful AI chat platform supporting multiple models with offline capabilities',
         start_url: '/',
         display: 'standalone',

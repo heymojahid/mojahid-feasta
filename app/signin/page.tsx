@@ -43,13 +43,13 @@ export default function SignIn() {
           <div className="text-center">
             <Image
               src="/brand.svg"
-              alt="AI Fiesta"
+              alt="Mojahid AI"
               width={64}
               height={64}
               className="mx-auto rounded-lg"
             />
             <h2 className="mt-6 text-3xl font-bold text-white">
-              Sign in to Open Fiesta
+              Sign in to Mojahid AI
             </h2>
             <p className="mt-2 text-sm text-zinc-400">
               Choose your preferred sign-in method

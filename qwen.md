@@ -1,8 +1,8 @@
-# Open-Fiesta Gemini Assistant Context
+# Mojahid AI Gemini Assistant Context
 
 ## Project Overview
 
-Open-Fiesta is a web-based AI chat playground built with Next.js and TypeScript. It allows users to interact with and compare various large language models (LLMs) from different providers side-by-side. The application features a flexible interface where users can select up to five models to chat with simultaneously.
+Mojahid AI is a web-based AI chat playground built with Next.js and TypeScript. It allows users to interact with and compare various large language models (LLMs) from different providers side-by-side. The application features a flexible interface where users can select up to five models to chat with simultaneously.
 
 ### Key Features:
 

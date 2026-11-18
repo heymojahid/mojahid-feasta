@@ -93,7 +93,7 @@ export async function POST(req: NextRequest) {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${apiKey}`,
-        'User-Agent': 'Open-Fiesta/1.0',
+        'User-Agent': 'Mojahid-AI/1.0',
       },
       body: JSON.stringify(requestBody),
     });

@@ -1,5 +1,5 @@
 {
-  "name": "ai_fiesta",
+  "name": "mojahid-ai",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -14,8 +14,8 @@
     "test:e2e": "RUN_INTEGRATION_TESTS=true jest __tests__/integration/sharing-e2e.test.tsx",
     "test:visual": "RUN_INTEGRATION_TESTS=true jest __tests__/integration/visual-consistency.test.ts",
     "unimported": "unimported",
-    "docker:build": "docker build -t ai_fiesta .",
-    "docker:run": "docker run -p 3000:3000 ai_fiesta",
+    "docker:build": "docker build -t mojahid_ai .",
+    "docker:run": "docker run -p 3000:3000 mojahid_ai",
     "docker:dev": "./scripts/docker-deploy.sh dev",
     "docker:prod": "./scripts/docker-deploy.sh prod",
     "docker:test": "./scripts/docker-deploy.sh test",
