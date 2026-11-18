@@ -10,6 +10,7 @@ declare global {
 }
 
 import { useEffect, useMemo, useRef, useState, useCallback } from "react"
+import { useRouter } from "next/navigation"
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { mergeModels, useCustomModels } from '@/lib/customModels';
 import { ChatMessage, ApiKeys, ChatThread, AiModel } from '@/lib/types';
@@ -41,12 +42,23 @@ import ProjectModal from '@/components/modals/ProjectModal'
 import { Project } from '@/lib/projects'
 
 export default function MojahidAiChat() {
+  const router = useRouter()
   const { user } = useAuth()
   const { theme } = useTheme()
   const isDark = theme.mode === 'dark'
   
   const guestMode = process.env.NEXT_PUBLIC_GUEST_MODE === 'true' || !isSupabaseConfigured
   const [isHydrated, setIsHydrated] = useState(false)
+
+  // Gate access if launch access code has not been entered
+  useEffect(() => {
+    if (isHydrated && typeof window !== 'undefined') {
+      const access = localStorage.getItem('mojahid_access_granted')
+      if (access !== 'MOJAHID26') {
+        router.push('/')
+      }
+    }
+  }, [isHydrated, router])
   const [showSplash, setShowSplash] = useState(true)
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)

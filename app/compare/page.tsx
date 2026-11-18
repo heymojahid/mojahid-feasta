@@ -48,6 +48,16 @@ export default function Home() {
 
   const guestMode = process.env.NEXT_PUBLIC_GUEST_MODE === 'true' || !isSupabaseConfigured;
 
+  // Gate access if launch access code has not been entered
+  useEffect(() => {
+    if (isHydrated && typeof window !== 'undefined') {
+      const access = localStorage.getItem('mojahid_access_granted')
+      if (access !== 'MOJAHID26') {
+        router.push('/')
+      }
+    }
+  }, [isHydrated, router]);
+
   // Redirect to signin if not authenticated and not in guest mode
   useEffect(() => {
     if (isHydrated && !loading && !user && !guestMode) {
